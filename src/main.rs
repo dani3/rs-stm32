@@ -2,6 +2,8 @@
 #![no_std]
 #![no_main]
 
+extern crate stm32f1;
+
 pub use cortex_m_rt::entry;
 pub use panic_itm;
 
