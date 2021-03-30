@@ -1,4 +1,3 @@
 #!/bin/bash
 
-pushd $OPENOCD_HOME
-openocd -s scripts/ -f interface/stlink.cfg -f target/stm32f1x.cfg
+openocd -s $OPENOCD_HOME/scripts/ -f interface/stlink.cfg -f target/stm32f1x.cfg
