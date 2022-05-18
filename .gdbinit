@@ -1,8 +1,5 @@
 # Connect to gdb remote server
-target remote :3333
-
-# Load will flash the code
-load
+target extended-remote :3333
 
 # Eanble demangling asm names on disassembly
 set print asm-demangle on
@@ -20,6 +17,8 @@ monitor tpiu config internal itm.txt uart off 8000000
 # Turn on the itm port
 monitor itm port 0 on
 
+monitor arm semihosting enable
+
 # Set a breakpoint at main, aka entry
 break main
 
@@ -29,8 +28,11 @@ break DefaultHandler
 # Set a breakpiont at HardFault
 break HardFault
 
-# Continue running and unill we hit the main breakpoint
-continue
+# Set a breakpoint on panic
+break rust_begin_unwind
 
-# Step from the trampoline code in entry into main
-step
+# Flash the code
+load
+
+# Start the process but immediately halt the processor
+stepi

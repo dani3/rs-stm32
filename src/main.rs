@@ -2,12 +2,12 @@
 #![no_std]
 #![no_main]
 
-extern crate stm32f1;
+extern crate stm32f0;
 
 pub use cortex_m_rt::entry;
 pub use panic_itm;
 
-pub use stm32f1xx_hal::prelude::*;
+pub use stm32f0xx_hal::prelude::*;
 
 pub use cortex_m::{iprintln, peripheral::ITM};
 
